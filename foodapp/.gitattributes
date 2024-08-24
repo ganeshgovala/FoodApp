@@ -1,0 +1,23 @@
+# Set the default behavior to automatically normalize line endings.
+* text=auto
+
+# Explicitly declare text files to be normalized and converted 
+# to native line endings on checkout.
+*.dart text
+*.java text
+*.xml text
+*.gradle text
+*.swift text
+*.c text
+*.h text
+*.cpp text
+*.html text
+*.css text
+*.js text
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.pdf binary
