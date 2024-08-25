@@ -1,15 +1,39 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp/auth/auth_service.dart';
 import 'package:foodapp/components/InputField.dart';
 import 'package:foodapp/pages/LoginPage.dart';
 import 'package:foodapp/widgets/widget_support.dart';
 
 class SignupPage extends StatelessWidget {
+  final AuthService _auth = AuthService();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final _formkey = GlobalKey<FormState>();
   SignupPage({super.key});
+
+  void register(context) async {
+    try {
+      await _auth.register(_emailController.text, _passwordController.text);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Registered successfully"),)
+      );
+    } 
+    on FirebaseAuthException catch(e) {
+      if(e.code == "weak-password") {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Weak Password"))
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.code))
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,28 +79,36 @@ class SignupPage extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30.0),
-                        child: Text("Signup", style: AppWidget.HeadingTextFieldStyle()),
-                      ),
-                      SizedBox(height: 20),
-                      InputField(hintText: "Name", obsecureText: false, icon: Icon(Icons.person_outline), controller: _usernameController,),
-                      SizedBox(height: 10),
-                      InputField(hintText: "Email", obsecureText: false, icon: Icon(Icons.email_outlined), controller: _emailController),
-                      SizedBox(height: 10),
-                      InputField(hintText: "Password", obsecureText: true, icon: Icon(Icons.lock_outline), controller: _passwordController,),
-                      SizedBox(height: 30),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: Text("Signup", style: AppWidget.HeadingTextFieldStyle()),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 34, vertical: 10),
-                        child: Text("Signup", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400, fontFamily: 'Poppins'))
-                      ),
-                    ],
+                        SizedBox(height: 20),
+                        InputField(hintText: "Name", obsecureText: false, icon: Icon(Icons.person_outline), controller: _usernameController,),
+                        SizedBox(height: 10),
+                        InputField(hintText: "Email", obsecureText: false, icon: Icon(Icons.email_outlined), controller: _emailController),
+                        SizedBox(height: 10),
+                        InputField(hintText: "Password", obsecureText: true, icon: Icon(Icons.lock_outline), controller: _passwordController,),
+                        SizedBox(height: 30),
+                        GestureDetector(
+                          onTap: () {
+                            register(context);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 34, vertical: 10),
+                            child: Text("Signup", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400, fontFamily: 'Poppins'))
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

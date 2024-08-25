@@ -22,8 +22,14 @@ class _InputFieldState extends State<InputField> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TextField(
+      child: TextFormField(
         controller: widget.controller,
+        validator: (value) {
+          if (value != null) {
+            return "Please Enter Email";
+          }
+          return null;
+        },
         decoration: InputDecoration(
           prefixIcon: widget.icon,
           enabledBorder: OutlineInputBorder(

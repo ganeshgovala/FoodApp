@@ -1,14 +1,34 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp/auth/auth_service.dart';
 import 'package:foodapp/components/InputField.dart';
+import 'package:foodapp/pages/BottomNav.dart';
 import 'package:foodapp/pages/SignupPage.dart';
 import 'package:foodapp/widgets/widget_support.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
+  final formKey = GlobalKey<FormState>();
   LoginPage({super.key});
+
+  void login(context) async {
+    try {
+      await _authService.sigin(_usernameController.text, _passwordController.text);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login Successful"))
+      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNav()));
+    }
+    on FirebaseAuthException catch(e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.code))
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,31 +74,39 @@ class LoginPage extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30.0),
-                        child: Text("LOGIN", style: AppWidget.HeadingTextFieldStyle()),
-                      ),
-                      SizedBox(height: 20),
-                      InputField(hintText: "Username", obsecureText: false, icon: Icon(Icons.person_outline), controller: _usernameController),
-                      SizedBox(height: 10),
-                      InputField(hintText: "Password", obsecureText: true, icon: Icon(Icons.lock_outline), controller: _passwordController),
-                      SizedBox(height: 3),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Row(mainAxisAlignment : MainAxisAlignment.end, children: [Text("Forgot password ?", style: AppWidget.MenuHeading(),)],),
-                      ),
-                      SizedBox(height: 39),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: Text("LOGIN", style: AppWidget.HeadingTextFieldStyle()),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 34, vertical: 10),
-                        child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400, fontFamily: 'Poppins'))
-                      ),
-                    ],
+                        SizedBox(height: 20),
+                        InputField(hintText: "Username", obsecureText: false, icon: Icon(Icons.person_outline), controller: _usernameController),
+                        SizedBox(height: 10),
+                        InputField(hintText: "Password", obsecureText: true, icon: Icon(Icons.lock_outline), controller: _passwordController),
+                        SizedBox(height: 3),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Row(mainAxisAlignment : MainAxisAlignment.end, children: [Text("Forgot password ?", style: AppWidget.MenuHeading(),)],),
+                        ),
+                        SizedBox(height: 39),
+                        GestureDetector(
+                          onTap: () {
+                            login(context);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 34, vertical: 10),
+                            child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400, fontFamily: 'Poppins'))
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
