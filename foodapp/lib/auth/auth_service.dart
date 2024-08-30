@@ -23,6 +23,11 @@ class AuthService {
     return userCredential;
   }
 
+  // reset password
+  void resetPassword(String email) async {
+    await _authService.sendPasswordResetEmail(email: email);
+  }
+
   // logout
 
   // forgot password
