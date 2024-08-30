@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:foodapp/pages/LoginPage.dart';
 import 'package:foodapp/widgets/content_model.dart';

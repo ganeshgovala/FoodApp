@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:foodapp/auth/auth_service.dart';
 import 'package:foodapp/components/InputField.dart';
 import 'package:foodapp/pages/BottomNav.dart';
+import 'package:foodapp/pages/ForgotPasswordPage.dart';
 import 'package:foodapp/pages/SignupPage.dart';
 import 'package:foodapp/widgets/widget_support.dart';
 
@@ -89,7 +90,14 @@ class LoginPage extends StatelessWidget {
                         SizedBox(height: 3),
                         Padding(
                           padding: const EdgeInsets.only(right: 10.0),
-                          child: Row(mainAxisAlignment : MainAxisAlignment.end, children: [Text("Forgot password ?", style: AppWidget.MenuHeading(),)],),
+                          child: Row(mainAxisAlignment : MainAxisAlignment.end, children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()));
+                              },
+                              child: Text("Forgot password ?", style: AppWidget.MenuHeading(),
+                            ))
+                          ],),
                         ),
                         SizedBox(height: 39),
                         GestureDetector(
