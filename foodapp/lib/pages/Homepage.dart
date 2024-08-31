@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Hello John,", style: AppWidget.boldTextFieldStyle(),),
+                  Text("Hello,", style: AppWidget.boldTextFieldStyle(),),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
