@@ -11,85 +11,368 @@ class _WalletPageState extends State<WalletPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("My Wallet", style: TextStyle(
+                color: Colors.black,
+                fontSize: 26,
+                fontWeight: FontWeight.w700
+              )),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Container(
+                    height: 170,
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    decoration: BoxDecoration(
+                      color: Colors.yellow.shade700,
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.wallet, color: Colors.black, size: 26),
+                        SizedBox(height: 5),
+                        Text("Total Amount", style: TextStyle(
+                          color: const Color.fromARGB(255, 37, 37, 37),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600
+                        ),),
+                        SizedBox(height: 4),
+                        Text("\$290.00", style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 38,
+                          fontWeight: FontWeight.w700,
+                        )),
+                        Text("3 * * * - * * * * - * * * * - * 3 9 1", style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ))
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment(0, 0),
+                      height: 170,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade700,
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Text(" +\n A\n D\n D", style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600
+                      ))
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 20),
+              Text("Add Money", style : TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              )),
+              SizedBox(height: 10),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   children: [
-                    Text("My Wallet", style: TextStyle(
-                      color: Colors.grey.shade900,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900
-                    )),
-                    Text("Active", style: TextStyle(
-                      color: Colors.grey.shade700,
-                      fontSize: 14,
-                    ))
+                    Container(
+                      alignment: Alignment(0, 0),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade600,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                      child: Text("50", style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ))
+                    ),
+                    SizedBox(width: 5),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade600,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                      child: Text("75", style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ))
+                    ),
+                    SizedBox(width: 5),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade600,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                      child: Text("100", style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ))
+                    ),
+                    SizedBox(width: 5),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade600,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                      child: Text("125", style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ))
+                    ),
+                    SizedBox(width: 5),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade600,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                      child: Text("150", style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ))
+                    )
                   ],
                 ),
-                Container(
-                  height: 40,
-                  width: 40,
-                  child: CircleAvatar(
-                    backgroundColor: const Color.fromARGB(255, 216, 195, 0),
-                    child: Icon(Icons.person, color: Colors.white)
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              height: 150,
-              width: MediaQuery.of(context).size.width / 1.1,
-              decoration: BoxDecoration(
-                boxShadow: [ BoxShadow(
-                  color: const Color.fromARGB(255, 219, 219, 219),
-                  blurRadius: 30,
-                  spreadRadius: 5,
-                  offset: Offset(1, 1),
-                ) ],
-                color: const Color.fromARGB(255, 234, 210, 0),
-                borderRadius: BorderRadius.circular(70)
               ),
-              padding: EdgeInsets.symmetric(vertical: 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
+              SizedBox(height: 20),
+              Text("Transactions", style : TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              )),
+              SizedBox(
+                height: 20
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Wallet", style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w800,
-                          )),
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
                           SizedBox(width: 10),
-                          Icon(Icons.wallet, size: 30),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
                         ],
                       ),
-                      Text("280/-", style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 34
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
                       ))
                     ],
-                  ),
-                ],
-              )
-            )
-          ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
+                          SizedBox(width: 10),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
+                        ],
+                      ),
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ))
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
+                          SizedBox(width: 10),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
+                        ],
+                      ),
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ))
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
+                          SizedBox(width: 10),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
+                        ],
+                      ),
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ))
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
+                          SizedBox(width: 10),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
+                        ],
+                      ),
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ))
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
+                          SizedBox(width: 10),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
+                        ],
+                      ),
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ))
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.yellow.shade700,
+                            child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                          ),
+                          SizedBox(width: 10),
+                          Text("Transaction Name", style : TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800
+                          )),
+                        ],
+                      ),
+                      Text("\$12", style : TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ))
+                    ],
+                  )
+                ),
+              ),
+            ],
+          ),
         ),
-      )
+      ),
     );
   }
 }
