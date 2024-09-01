@@ -8,6 +8,7 @@ import 'package:foodapp/pages/ForgotPasswordPage.dart';
 import 'package:foodapp/pages/Homepage.dart';
 import 'package:foodapp/pages/LoginPage.dart';
 import 'package:foodapp/pages/OnBoard.dart';
+import 'package:foodapp/pages/Wallet.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnBoard(),
+      home: WalletPage(),
     );
   }
 }
