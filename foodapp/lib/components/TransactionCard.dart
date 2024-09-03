@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class TransactionCard extends StatelessWidget {
   final String TransactionName;
+  final int price;
   const TransactionCard({
     required this.TransactionName,
+    required this.price,
     super.key
   });
 
