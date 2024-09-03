@@ -26,13 +26,13 @@ class TransactionCard extends StatelessWidget {
                   child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
                 ),
                 SizedBox(width: 10),
-                Text("Transaction Name", style : TextStyle(
+                Text(TransactionName, style : TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w800
                 )),
               ],
             ),
-            Text("\$12", style : TextStyle(
+            Text("\$${price}", style : TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold
             ))
