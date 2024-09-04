@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class TransactionCard extends StatelessWidget {
   final String TransactionName;
   final int price;
+  final Color color;
   const TransactionCard({
     required this.TransactionName,
     required this.price,
+    required this.color,
     super.key
   });
 
@@ -22,7 +24,7 @@ class TransactionCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.yellow.shade700,
+                  backgroundColor: color,
                   child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
                 ),
                 SizedBox(width: 10),
