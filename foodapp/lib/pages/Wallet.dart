@@ -167,9 +167,9 @@ class _WalletPageState extends State<WalletPage> {
               SizedBox(
                 height: 20
               ),
-              TransactionCard(TransactionName: "Transaction1", price: 29, color: Colors.blue.shade700),
-              TransactionCard(TransactionName: "Transaction1", price: 29, color: Colors.yellow.shade700),
-              TransactionCard(TransactionName: "Transaction1", price: 29, color: Colors.red.shade700),
+              TransactionCard(TransactionName: "Chicken Biriyani", price: 29, color: Colors.blue.shade700),
+              TransactionCard(TransactionName: "Chicken Pizza", price: 29, color: Colors.yellow.shade700),
+              TransactionCard(TransactionName: "Mixed Mandi", price: 29, color: Colors.red.shade700),
               TransactionCard(TransactionName: "Transaction1", price: 29, color: Colors.green.shade700),
               TransactionCard(TransactionName: "Transaction1", price: 29, color: Colors.orange.shade700),
               TransactionCard(TransactionName: "Transaction1", price: 29, color: Colors.pink.shade700),
