@@ -25,7 +25,7 @@ class TransactionCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundColor: color,
-                  child: Icon(Icons.person, color: const Color.fromARGB(255, 0, 0, 0))
+                  child: Icon(Icons.person, color: const Color.fromARGB(255, 255, 255, 255))
                 ),
                 SizedBox(width: 10),
                 Text(TransactionName, style : TextStyle(

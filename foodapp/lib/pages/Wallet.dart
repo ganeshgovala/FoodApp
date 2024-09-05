@@ -65,11 +65,11 @@ class _WalletPageState extends State<WalletPage> {
                       alignment: Alignment(0, 0),
                       height: 170,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade700,
+                        color: const Color.fromRGBO(192, 192, 192, 1),
                         borderRadius: BorderRadius.circular(20)
                       ),
                       child: Text(" +\n A\n D\n D", style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                         fontSize: 16,
                         fontWeight: FontWeight.w600
                       ))
@@ -167,15 +167,15 @@ class _WalletPageState extends State<WalletPage> {
               SizedBox(
                 height: 20
               ),
-              TransactionCard(TransactionName: "Chicken Biriyani", price: 39, color: Colors.blue.shade700),
-              TransactionCard(TransactionName: "Chicken Pizza", price: 19, color: Colors.yellow.shade700),
-              TransactionCard(TransactionName: "Mixed Mandi", price: 59, color: Colors.red.shade700),
-              TransactionCard(TransactionName: "Mutton Pulow", price: 49, color: Colors.green.shade700),
-              TransactionCard(TransactionName: "Veg Mixed Curry", price: 15, color: Colors.orange.shade700),
-              TransactionCard(TransactionName: "Aloo fry", price: 10, color: Colors.pink.shade700),
-              TransactionCard(TransactionName: "Meals", price: 18, color: Colors.lime.shade700),
-              TransactionCard(TransactionName: "Mutton Mandhi", price: 55, color: Colors.purple.shade700),
-              TransactionCard(TransactionName: "Chicken fry", price: 22, color: Colors.cyan.shade700),
+              TransactionCard(TransactionName: "Chicken Biriyani", price: 39, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Chicken Pizza", price: 19, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Mixed Mandi", price: 59, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Mutton Pulow", price: 49, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Veg Mixed Curry", price: 15, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Aloo fry", price: 10, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Meals", price: 18, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Mutton Mandhi", price: 55, color: const Color.fromARGB(255, 40, 40, 40)),
+              TransactionCard(TransactionName: "Chicken fry", price: 22, color: const Color.fromARGB(255, 40, 40, 40)),
             ],
           ),
         ),
