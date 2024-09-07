@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:foodapp/components/TransactionCard.dart';
+import 'package:foodapp/widgets/app_constant.dart';
+import 'package:http/http.dart' as http;
 
 class WalletPage extends StatefulWidget {
   const WalletPage({super.key});
@@ -9,6 +14,9 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
+
+  Map<String, dynamic>? paymentIntent;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,5 +189,78 @@ class _WalletPageState extends State<WalletPage> {
         ),
       ),
     );
+  }
+
+  Future<void> makePayment(String amount) async {
+    try {
+      paymentIntent = await createPaymentIntent(amount, 'INR');
+      await Stripe.instance.initPaymentSheet(paymentSheetParameters: SetupPaymentSheetParameters(
+        paymentIntentClientSecret: paymentIntent!['client_secret'],
+        style: ThemeMode.dark,
+        merchantDisplayName: 'ganesh',
+      )).then((value) {});
+
+      displayPaymentSheet(amount);
+    } catch (e,s) {
+      print("Exception : $e $s");
+    }
+  }
+
+  displayPaymentSheet(String amount) async {
+    try {
+      await Stripe.instance.presentPaymentSheet().then((value) async{
+        showDialog(context: context, builder: (_) => AlertDialog(
+          content: Column(
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.check_circle, color: Colors.green), Text("Payment Successful")
+                ],
+              )
+            ],
+          )
+        ));
+        // await usergetprofile();
+        paymentIntent = null;
+      }).onError((error, stackTrace) {
+        print("Error is ---> $error $stackTrace");
+      });
+    } on StripeException catch(e) {
+      print("Error is ---> $e");
+      showDialog(context: context, builder: (context) => AlertDialog(
+        content: Text("Cancelled"),
+      ));
+    } catch(e) {
+      print("Error ---> $e");
+    }
+  }
+
+  createPaymentIntent(String amount, String currency) async {
+    try {
+      Map<String, dynamic> body = {
+        'amount' : calculateAmount(amount),
+        'currency' : currency,
+        'payment_method_types[]' : 'card',
+      };
+
+      var response = await http.post(
+        Uri.parse('https://api.stripe.com/v1/payment_intents'),
+        headers: {
+          'Authorization' : 'Bearer $secretKey',
+          'Content-Type' : 'application/x-www-form-urlencoded' 
+        },
+        body: body,
+      );
+      print('Payment Intent Body --> ${response.body.toString()}');
+      return jsonDecode(response.body);
+    } catch (e) {
+      print('Error charging user : ${e.toString()}');
+    }
+  }
+
+  calculateAmount(String amount) {
+    final calculatedAmount = (int.parse(amount ) * 100);
+
+    return calculatedAmount.toString();
   }
 }
