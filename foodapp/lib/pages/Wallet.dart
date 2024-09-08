@@ -95,18 +95,24 @@ class _WalletPageState extends State<WalletPage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Container(
-                      alignment: Alignment(0, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade600,
-                        borderRadius: BorderRadius.circular(10)
+                    GestureDetector(
+                      onTap: () {
+                        makePayment("50");
+                        print("---");
+                      },
+                      child: Container(
+                        alignment: Alignment(0, 0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade600,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                        child: Text("50", style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ))
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
-                      child: Text("50", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ))
                     ),
                     SizedBox(width: 5),
                     Container(

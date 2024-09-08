@@ -11,11 +11,15 @@ import 'package:foodapp/pages/LoginPage.dart';
 import 'package:foodapp/pages/OnBoard.dart';
 import 'package:foodapp/pages/Wallet.dart';
 import 'package:foodapp/widgets/app_constant.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  Stripe.publishableKey = publishableKey;
+   if (!kIsWeb) {
+    // Initialize Stripe for mobile platforms only (iOS/Android)
+    Stripe.publishableKey = 'your-publishable-key';
+  }
   runApp(MyApp());
 }
 
