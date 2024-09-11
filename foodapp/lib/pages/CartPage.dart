@@ -29,7 +29,7 @@ class _CartPageState extends State<CartPage> {
                 itemCount: widget._cartModel.orderItems.length,
                 itemBuilder: (context, index) {
                   return Material(
-                    elevation: 2.0,
+                    elevation: 5.0,
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
                       child: Row(
