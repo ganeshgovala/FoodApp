@@ -220,7 +220,7 @@ class _WalletPageState extends State<WalletPage> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.check_circle, color: Colors.green), Text("Payment Successful")
+                  Icon(Icons.check_circle, color: const Color.fromARGB(255, 74, 189, 78)), Text("Payment Successful")
                 ],
               )
             ],
