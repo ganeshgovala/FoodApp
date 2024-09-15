@@ -71,7 +71,7 @@ class _WalletPageState extends State<WalletPage> {
                   Expanded(
                     child: Container(
                       alignment: Alignment(0, 0),
-                      height: 150,
+                      height: 170,
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(192, 192, 192, 1),
                         borderRadius: BorderRadius.circular(20)
