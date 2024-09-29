@@ -9,6 +9,7 @@ import 'package:foodapp/pages/ForgotPasswordPage.dart';
 import 'package:foodapp/pages/Homepage.dart';
 import 'package:foodapp/pages/LoginPage.dart';
 import 'package:foodapp/pages/OnBoard.dart';
+import 'package:foodapp/pages/ProfilePage.dart';
 import 'package:foodapp/pages/Wallet.dart';
 import 'package:foodapp/widgets/app_constant.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;

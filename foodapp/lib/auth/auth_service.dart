@@ -29,6 +29,11 @@ class AuthService {
   }
 
   // logout
+  void logout() async {
+    print("pressed");
+    await _authService.signOut();
+    print("Logged out");
+  }
 
   // forgot password
 }
