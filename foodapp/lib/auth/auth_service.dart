@@ -19,7 +19,6 @@ class AuthService {
       email: email, 
       password: password
     );
-
     return userCredential;
   }
 
