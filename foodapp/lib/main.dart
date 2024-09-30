@@ -13,6 +13,7 @@ import 'package:foodapp/pages/ProfilePage.dart';
 import 'package:foodapp/pages/Wallet.dart';
 import 'package:foodapp/widgets/app_constant.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,10 @@ void main() async {
     // Initialize Stripe for mobile platforms only (iOS/Android)
     Stripe.publishableKey = 'your-publishable-key';
   }
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
+
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNav(),
+      home: HomePage(),
     );
   }
 }

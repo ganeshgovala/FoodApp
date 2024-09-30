@@ -41,6 +41,7 @@ dependencies:
   firebase_cloud_firestore: ^5.0.1
   flutter_stripe: ^11.0.0
   http: ^1.2.2
+  provider: 
 
 dev_dependencies:
   flutter_test:
