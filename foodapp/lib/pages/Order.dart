@@ -11,7 +11,11 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(),
+      body: Column(
+        children: [
+          Text("No Orders till now"),
+        ],
+      ),
     );
   }
 }
