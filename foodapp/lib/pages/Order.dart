@@ -12,8 +12,11 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("No Orders till now"),
+          Text("No Orders till now", style: TextStyle(
+            fontSize: 24,
+          ),),
         ],
       ),
     );
