@@ -16,7 +16,7 @@ class _OrderPageState extends State<OrderPage> {
         children: [
           Text("No Orders till now", style: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w400,
           ),),
         ],
       ),
